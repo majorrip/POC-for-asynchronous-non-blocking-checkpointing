@@ -1,6 +1,8 @@
 # Proof-of-Concept-POC-for-asynchronous-non-blocking-checkpointing
 This  is a complete, self-contained, and highly optimized Python script that serves as a localized Proof-of-Concept (POC) for asynchronous, non-blocking checkpointing inspired by the "DataStates-LLM" paradigm
 
+[Link to collab (https://colab.research.google.com/drive/1Tkk8fYIgyM33RGJABEscmmH5iUKQ-0RO?usp=sharing)]
+
 ## Architecture Overview
 To achieve true non-blocking checkpointing without stalling the GPU compute engine, this implementation leverages a Dual-Stage Pipeline:
 
