@@ -86,6 +86,8 @@ Proposed (Async) : ▄▄▄▄▄▄▄▄
 * Stall Reduction:  There was a reduced accumulated storage stall from `2.1382s` down to `0.14466s` which is a `93.2%$` change due to the elimination of I/O Blocking
 
 ### Graphs & Charts
-<img width="2061" height="1161" alt="charts" src="https://github.com/user-attachments/assets/cc2b4494-a71b-4ca7-811b-8ec754d29ff1" />
-<img width="1611" height="1161" alt="chart2" src="https://github.com/user-attachments/assets/8f31fa2c-b258-40f9-b429-29fdf6a9b92b" />
+<img width="2061" height="1161" alt="charts" src="https://github.com/user-attachments/assets/6f6df2db-9f6f-4254-b2b0-c33804b5033b" />
+<img width="1611" height="1161" alt="chart2" src="https://github.com/user-attachments/assets/06e4fd22-4342-49e8-b038-47867632f051" />
+
+
 
