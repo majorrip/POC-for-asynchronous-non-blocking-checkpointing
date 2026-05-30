@@ -72,12 +72,12 @@ Proposed (Async) : ▄▄▄▄▄▄▄▄
 
 * The Culprit: The main training thread is completely blocked for 0.5673s. Why is it longer than your 0.350s delay? Because the baseline forces the CPU to block while doing a synchronous memory copy (.cpu().clone()) plus the simulated serialization delay.
 
-* Thesis Takeaway: In standard training frameworks (like vanilla torch.save), the GPU sits completely idle during a checkpoint. The hardware efficiency (MFU / Model Flops Utilization) drops off a cliff.
+* Takeaway: In standard training frameworks (like vanilla torch.save), the GPU sits completely idle during a checkpoint. The hardware efficiency (MFU / Model Flops Utilization) drops off a cliff.
 
-2. The Asynchronous Paradigm (Your State Provider)
+2. The Asynchronous Paradigm (State Provider)
 * The Math: Look at Iteration 02 under the Async strategy. The step time only bumps up slightly to 0.2181s, and the measured stall overhead drops to a tiny 0.0362s.
 
-* The Magic: That 0.0362s is the only time the main loop was delayed. This is the exact window it took your dedicated CUDA stream to trigger the Device-to-Host (D2H) copy to pinned memory. Once that tiny transfer was initialized, the main loop immediately moved on to Iteration 03.
+* The Result: That 0.0362s is the only time the main loop was delayed. This is the exact window it took your dedicated CUDA stream to trigger the Device-to-Host (D2H) copy to pinned memory. Once that tiny transfer was initialized, the main loop immediately moved on to Iteration 03.
 
 * Hiding the I/O: Where did the 0.350s disk write delay go? It ran completely in parallel on your background CPU thread during Iterations 02 and 03. The latency was entirely hidden.
 
